@@ -210,7 +210,7 @@ run '~/.tmux/plugins/tpm/tpm'
 + had to manually install pip for some reason, thought it was bundled with python3.4 and greater.
 	+ `sudo apt install pip`
 + `pip install jakym`
-+ Need to put in some work for audio to work, probably with the pulse audio workaround.
++ Need to put in some work for WSL2 audio to work, probably with the pulse audio workaround.
 
 ## rustup -> cargo
 + (!!) Install with rustup instead, since rustup bundles rustc and cargo.
