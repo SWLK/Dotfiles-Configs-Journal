@@ -286,6 +286,25 @@ To only output the analytics script on development:
 + run `lsof -wni tcp:PORT` to get PID
 + run `kill -9 PID`
 
+## tuir
++ install with pip: `pip install tuir`
++ install from source:
+	+ `git clone https://gitlab.com/ajak/tuir.git`
+	+ `cd tuir && python setup.py install`
++ associating MIME types with `tuir --copy-mailcap`
+	+ Setup mailcap file, then launch tuir with `tuir --enable-media` flagm or set it in `tuir.cfg`
++ comment out line for vlc in `~/.config/tuir/mailcap` if using mpv
+
+## feh
++ image viewer for tuir
++ get dependencies `apt-get install libcurl4-openssl-dev libx11-dev libxt-dev libimlib2-dev libxinerama-dev libjpeg-progs`
++ clone repo `git clone https://git.finalrewind.org/feh`
++ `cd feh && make` -> `sudo make install`
+
+## mpv
++ video and media player for tuir
++ `sudo apt install mpv`
+
 ## funsies
 
 + `curl -L rum.sh/ricebowl -o ricebowl`
