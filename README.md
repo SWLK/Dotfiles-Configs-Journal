@@ -1,6 +1,8 @@
 # Tracking packages I have installed on my Kali distro:
 
 ## neofetch
++ I have tried setting custom images with `--w3m` which worked for the most part with `--size`, but results vary from terminal to terminal, so it's a bit tedious.
++ Would probably use macchina or fet.sh instead most of the time for simplicity.
 
 ## nnn file manager
 
@@ -30,6 +32,8 @@ nnoremap O O<Esc>
 
 ## i3-gaps
 + Ended up not required since the display is shared with the Windows Host
++ Might tweak i3 on my Ubuntu server but the only GUI application I use is the browser anyway, so not much motivation for that.
+	+ Might make a custom homepage for Firefox at some point, if I feel a sudden burst of joy and vigor.
 
 ## xorg
 + Did not work out of the box
@@ -231,6 +235,11 @@ export PATH="$PATH:/home/$USER/.cargo/bin"
 alias macchina="macchina -t Helium -p -C Red --box-title \"[ Sean's Dirty Secrets ]\""
 ```
 
+## fet.sh
++ for bloat haters
++ hosted at `https://github.com/6gk/fet.sh`
++ simple to set up, simple to use
+
 ## unzip
 + doesn't come preinstalled
 + needed for nnn preview-tui to work
@@ -315,3 +324,13 @@ To only output the analytics script on development:
 + figlet
 
 + nms
+
++ devilspie
+	+ I do know that devilspie 2 exists, but I have had devilspie since last year, and it works perfectly fine, so I'm keeping it.
+	+ create a file for each application that you want to apply transparency, i.e. `~/.devilspie/name-of-prog_transparent.ds`
+
+for example:
+`firefox_transparent.ds`
+```Lua
+
+```
