@@ -328,9 +328,23 @@ To only output the analytics script on development:
 + devilspie
 	+ I do know that devilspie 2 exists, but I have had devilspie since last year, and it works perfectly fine, so I'm keeping it.
 	+ create a file for each application that you want to apply transparency, i.e. `~/.devilspie/name-of-prog_transparent.ds`
+	+ You can find the window_class of the application by opening a terminal next to the app you want to check, and run `xwininfo`
+		+ It'll prompt you to click on the window you would like to check
+		+ Get the window ID and run `xprop -id *window_id*`
+		+ Find the WINDOW_CLASS section
+		+ Note: There might be more than one entry. For example for me `urxvt` wouldn't work but `URxvt` works.
 
 for example:
 `firefox_transparent.ds`
 ```Lua
-
+( if
+		( contains ( window_class ) "Firefox" )
+	( begin 
+		spawn_async ( str "xprop -id "
+			( window_xid ) " -f _NET_WM_WINDOW_OPACITY 32c -set _NET_WM_WINDOW_OPACITY 0xdfffffff"
+			)
+	)
+)
 ```
+
+
