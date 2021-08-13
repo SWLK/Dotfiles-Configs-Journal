@@ -333,6 +333,7 @@ To only output the analytics script on development:
 		+ Get the window ID and run `xprop -id *window_id*`
 		+ Find the WINDOW_CLASS section
 		+ Note: There might be more than one entry. For example for me `urxvt` wouldn't work but `URxvt` works.
+	+ Run `devilspie` to apply effect, or you could add a line in your `.bashrc` to run it on start up.
 
 for example:
 `firefox_transparent.ds`
