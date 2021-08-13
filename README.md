@@ -1,4 +1,6 @@
-# Tracking packages I have installed on my Kali distro:
+# Tracking packages I have installed on my distros:
+
+![screenshot](/scrot_1.png)
 
 ## neofetch
 + I have tried setting custom images with `--w3m` which worked for the most part with `--size`, but results vary from terminal to terminal, so it's a bit tedious.
