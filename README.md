@@ -4,7 +4,10 @@
 ![screenshot2](/scrot_2.png)
 
 ## Prompt String
+```bash
 PS1="\[\033[s\033[0;0H\033[0;45m\033[K\033[1;37m\h => \W\033[0m\033[u\]\[\033[0;43m\]\[\033[0;31m\]\[\033[1B\]\u ->\$ \[\033[1;33m\]"
+export PS1
+```
 
 ## neofetch
 + I have tried setting custom images with `--w3m` which worked for the most part with `--size`, but results vary from terminal to terminal, so it's a bit tedious.
