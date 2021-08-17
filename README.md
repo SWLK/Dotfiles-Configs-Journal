@@ -358,4 +358,15 @@ for example:
 )
 ```
 
+## Misc
 
+Desktop failed to boot after I tried to create config files for i3 in `~`.
++ Naturally my approach was to remove those config files and restart.
+	+ This led me to try and remove the files through tty.
++ However, while trying to login to tty, I realized that my keyboard layout has been changed to Dvorak for some reason.
+	+ I had used Dvorak before, but have switched back to Qwerty after a while.
+	+ The Dvorak layout has since been removed, which is why it was strange to have the layout suddenly set to Dvorak.
++ At this point I had two options, to remove the files while having a Dvorak keymap open on another screen, or try to change the keyboard back to normal and remove the files.
++ I ended up using ssh to remove the files, and change the keyboard through `/etc/default/keyboard`
+	+ Within the file, `XKBLAYOUT` shows the current keyboard, and `XKBVARIANT` was showing "Dvorak", so I simply emptied the `XKBVARIANT` to an empty string.
++ Rebooted after and everything is back to normal.
