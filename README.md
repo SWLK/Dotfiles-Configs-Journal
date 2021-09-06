@@ -2,12 +2,74 @@
 
 ![screenshot1](/scrot_1.png)
 ![screenshot2](/scrot_2.png)
+![screenshot3](/scrot_3.png)
 
 ## Prompt String
 + Updated with fenced code block! Having it in plain text will have unintended escape sequences being interpreted by markdown since the prompt string utilizes backslash `\`.
 ```bash
 PS1="\[\033[s\033[0;0H\033[0;45m\033[K\033[1;37m\h => \W\033[0m\033[u\]\[\033[0;43m\]\[\033[0;31m\]\[\033[1B\]\u ->\$ \[\033[1;33m\]"
 export PS1
+```
+
+## Regolith
++ Changes directly applied to regolith DE configs
+
+`~/.config/regolith/Xresources`
+```bash
+# Xresources file to config i3 within regolith
+
+# fonts
+i3-wm.font: pango:Tamzen 16
+
+# i3 bar
+#i3-wm.bar.font: pango:Tamzen 16
+
+# i3 appearance
+i3-wm.client.focused.color.child_border: "#d22c26"
+
+# Wallpaper settings
+gnome.wallpaper: /home/sheung/Pictures/spaceman.png
+
+# Startup programs
+i3-wm.program.1: /home/sheung/.config/polybar/launch.sh
+```
+
+`/etc/regolith/i3/config`
++ commented out the entire i3-bar section to disable it.
+	+ Currently trying out Polybar
++ Changed terminal keybind (Super+Enter) to launch urxvt instead.
++ Change i3-wm.program.1 (polybar) to `exec_always`
+
+```bash
+## Launch // Terminal // <Super> Enter ##
+set_from_resource $i3-wm.binding.terminal i3-wm.binding.terminal Return
+bindsym $mod+$i3-wm.binding.terminal exec /usr/bin/urxvt
+
+## User programs from Xresources
+set_from_resource $i3-wm.program.1 i3-wm.program.1 :    
+exec_always --no-startup-id $i3-wm.program.1
+```
+
+## Polybar
+Installed by compiling from source.
++ Had to troubleshoot several issues.
+	+ default centre widget `mpd` needed to be installed, which is available from `apt`
+	+ some unicode characters require glyphs from `siji` font
+		+ siji font could be grabbed from `https://github.com/stark/siji`
+		+ however, after running `./install.sh` the font shows up on `xfontsel` but not on `fc-list siji`, and polybar would still emit `Dropping unmatched character...`
+		+ Solved by removing file `sudo rm /etc/fonts/conf.d/70-no-bitmaps.conf`
+		+ `fc-cache` then `fc-list siji` and siji is listed.
++ Create a launch.sh script for launch on i3 startup
+
+`/home/sheung/.config/polybar/launch.sh`
+```bash
+#!/bin/bash    
+    
+echo "---" | tee -a /tmp/polybar1.log    
+    
+polybar example 2>&1 | tee -a /tmp/polybar1.log & disown    
+    
+echo "bars launched..."
 ```
 
 ## neofetch
@@ -327,6 +389,10 @@ To only output the analytics script on development:
 + video and media player for tuir
 + `sudo apt install mpv`
 
+## surf
++ fall back browser
++ trouble getting it to work on WSL2.
+
 ## funsies
 
 + `curl -L rum.sh/ricebowl -o ricebowl`
@@ -361,4 +427,15 @@ for example:
 )
 ```
 
+## Misc
 
+Desktop failed to boot after I tried to create config files for i3 in `~`.
++ Naturally my approach was to remove those config files and restart.
+	+ This led me to try and remove the files through tty.
++ However, while trying to login to tty, I realized that my keyboard layout has been changed to Dvorak for some reason.
+	+ I had used Dvorak before, but have switched back to Qwerty after a while.
+	+ The Dvorak layout has since been removed, which is why it was strange to have the layout suddenly set to Dvorak.
++ At this point I had two options, to remove the files while having a Dvorak keymap open on another screen, or try to change the keyboard back to normal and remove the files.
++ I ended up using ssh to remove the files, and change the keyboard through `/etc/default/keyboard`
+	+ Within the file, `XKBLAYOUT` shows the current keyboard, and `XKBVARIANT` was showing "Dvorak", so I simply emptied the `XKBVARIANT` to an empty string.
++ Rebooted after and everything is back to normal.
