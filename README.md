@@ -61,6 +61,9 @@ nnoremap O O<Esc>
 export DISPLAY="*Host_IPv4*:0.0"
 ```
 
+> Remember to change `$DISPLAY` when internet connection changes.
+> There's also currently a problem with WSL2 not loading without an internet connection.
+
 ## kbd
 + used for chvt
 
