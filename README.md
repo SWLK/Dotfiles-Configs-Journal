@@ -436,3 +436,5 @@ Desktop failed to boot after I tried to create config files for i3 in `~`.
 + I ended up using ssh to remove the files, and change the keyboard through `/etc/default/keyboard`
 	+ Within the file, `XKBLAYOUT` shows the current keyboard, and `XKBVARIANT` was showing "Dvorak", so I simply emptied the `XKBVARIANT` to an empty string.
 + Rebooted after and everything is back to normal.
+
++ Since polybar battery status is inaccurate and does not refresh, using acpi temporarily to check battery status.
